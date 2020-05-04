@@ -5,11 +5,13 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+   <link href="./node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css" rel="stylesheet">
+   <link href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 
    <title>Angular Application</title>
 </head>
 
-<body ng-controller="produtoController as vm">
+<body ng-controller="produtoController as vm" ng-init="vm.init()">
    <div class="container">
 
       <div class="row justify-content-center">
@@ -37,13 +39,15 @@
             </tr>
             <tbody>
                <tr ng-repeat="item in vm.produtos track by $index">
-                  <td>{{item.nome}}</td>
-                  <td>{{item.preco}}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.price}}</td>
                   <td>
-                     <button class="btn btn-danger" ng-click="vm.delProdTab()">Delete</button>
+                     <i aria-hidden="true" class="fas fa-trash" ng-click="vm.delProdTab()"> </i>
+
                   </td>
+                  <td></td>
                   <td>
-                     <button class="btn btn-primary" ng-click="vm.updateProdTab(item, $index)">Update</button>
+                     <i aria-hidden="true" class="fas fa-edit" ng-click="vm.updateProdTab(item, $index)"></i>
                   </td>
                </tr>
             </tbody>
@@ -59,6 +63,7 @@
             <label for="inputPreço">Preço</label>
             <input type="text" id="inputPreço" name="inputPreço" placeholder="Digite o Preço" class="form-control"
                ng-model="update.preco" required>
+
 
             <button class="btn btn-success" ng-click="vm.saveUpdate()">Salvar</button>
          </form>
